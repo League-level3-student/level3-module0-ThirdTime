@@ -14,8 +14,9 @@ public class RobotRacerNoRecipe {
 		Random randNum = new Random(100);
 		int randomNumber;
 		
-		JOptionPane.showInputDialog("Place your bets! (Enter the number of robot you think will win the race)");
-
+		String userAnswer = JOptionPane.showInputDialog("Place your bets! (Enter the number of robot you think will win the race)");
+		int numberOfWinner = Integer.parseInt(userAnswer) - 1;
+		
 		for (int i = 0; i < robotList.length; i++) {
 			robotList[i] = new Robot();
 			robotList[i].moveTo((i + 1) * 130, 400);
