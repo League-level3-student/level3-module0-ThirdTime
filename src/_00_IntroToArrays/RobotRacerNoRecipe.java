@@ -7,27 +7,52 @@ import javax.swing.JOptionPane;
 import org.jointheleague.graphical.robot.Robot;
 
 public class RobotRacerNoRecipe {
-	static Robot[] robotList = new Robot[5];
+	private static int actualWinner;
+	private static int userBetWinner;
+	private static int usersNumOfRobots;
+	static Robot[] robotList;
 
 	public static void main(String[] args) {
 
-		Random randNum = new Random(100);
-		int randomNumber;
+		Random randNum = new Random();
+
+		String userResponse = JOptionPane
+				.showInputDialog("How many robots do you want to race? (Between 1-9 robots, please.)");
+		try{
+		usersNumOfRobots = Integer.parseInt(userResponse);
+		} catch(NumberFormatException e){
+			JOptionPane.showMessageDialog(null, "Letters are not acceptable values. Defaulting to 5 robots.");
+			usersNumOfRobots = 5;
+		}
 		
-		String userAnswer = JOptionPane.showInputDialog("Place your bets! (Enter the number of robot you think will win the race)");
-		int numberOfWinner = Integer.parseInt(userAnswer) - 1;
-		
+		while(usersNumOfRobots > 9 || usersNumOfRobots < 1){
+			userResponse = JOptionPane
+					.showInputDialog("This is an invalid value. Please enter a number from 1 to 9.");
+			usersNumOfRobots = Integer.parseInt(userResponse);
+		}
+
+		robotList = new Robot[usersNumOfRobots];
+
+		// String userAnswer = JOptionPane.showInputDialog("Place your bets!
+		// (Enter the number of robot you think will win the race)");
+		// userBetWinner = Integer.parseInt(userAnswer) - 1;
+
 		for (int i = 0; i < robotList.length; i++) {
 			robotList[i] = new Robot();
-			robotList[i].moveTo((i + 1) * 130, 400);
-			robotList[i].setPenColor(150, 150, 150);
+			if (usersNumOfRobots <= 5) {
+				robotList[i].moveTo((i + 1) * 130, 500);
+			}
+			if (usersNumOfRobots > 5) {
+				robotList[i].moveTo((i * 90), 500);
+			}
+			robotList[i].setPenColor(randNum.nextInt(255), randNum.nextInt(255), randNum.nextInt(255));
 			robotList[i].penDown();
 			robotList[i].setSpeed(10);
 		}
 
-		while (robotWonRace() == false) {
+		while (!robotWonRace()) {
 			for (int i = 0; i < robotList.length; i++) {
-				robotList[i].move(randNum.nextInt(30));
+				robotList[i].move(randNum.nextInt(70));
 			}
 
 		}
@@ -36,9 +61,24 @@ public class RobotRacerNoRecipe {
 	public static boolean robotWonRace() {
 		for (int i = 0; i < robotList.length; i++) {
 			if (robotList[i].getY() < 30) {
+				robotList[i].sparkle();
+				robotList[i].turn(-360);
+				actualWinner = i;
+				System.out.println(i);
+				// checkWinner();
 				return true;
 			}
 		}
 		return false;
 	}
+
+	// public static void checkWinner(){
+	// if(userBetWinner == actualWinner){
+	// JOptionPane.showMessageDialog(null, "Congrats, your robot won the
+	// race!");
+	// } else {
+	// JOptionPane.showMessageDialog(null, "Your robot didn't win the race.");
+	// }
+	// }
+
 }
