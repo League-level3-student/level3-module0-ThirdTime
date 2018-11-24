@@ -16,26 +16,23 @@ public class RobotRacerNoRecipe {
 
 		Random randNum = new Random();
 
-		String userResponse = JOptionPane
-				.showInputDialog("How many robots do you want to race? (Between 1-9 robots, please.)");
-		try{
-		usersNumOfRobots = Integer.parseInt(userResponse);
-		} catch(NumberFormatException e){
+		String userResponse = JOptionPane.showInputDialog("How many robots do you want to race? (Between 1-9 robots, please.)");
+		try {
+			usersNumOfRobots = Integer.parseInt(userResponse);
+		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Letters are not acceptable values. Defaulting to 5 robots.");
 			usersNumOfRobots = 5;
 		}
-		
-		while(usersNumOfRobots > 9 || usersNumOfRobots < 1){
-			userResponse = JOptionPane
-					.showInputDialog("This is an invalid value. Please enter a number from 1 to 9.");
+
+		while (usersNumOfRobots > 9 || usersNumOfRobots < 1) {
+			userResponse = JOptionPane.showInputDialog("This is an invalid value. Please enter a number from 1 to 9.");
 			usersNumOfRobots = Integer.parseInt(userResponse);
 		}
 
 		robotList = new Robot[usersNumOfRobots];
 
-		// String userAnswer = JOptionPane.showInputDialog("Place your bets!
-		// (Enter the number of robot you think will win the race)");
-		// userBetWinner = Integer.parseInt(userAnswer) - 1;
+		String userAnswer = JOptionPane.showInputDialog("Now place your bets! (Enter the number of the robot that you think will win the race)");
+		userBetWinner = Integer.parseInt(userAnswer) - 1;
 
 		for (int i = 0; i < robotList.length; i++) {
 			robotList[i] = new Robot();
@@ -64,21 +61,19 @@ public class RobotRacerNoRecipe {
 				robotList[i].sparkle();
 				robotList[i].turn(-360);
 				actualWinner = i;
-				System.out.println(i);
-				// checkWinner();
+				checkWinner();
 				return true;
 			}
 		}
 		return false;
 	}
 
-	// public static void checkWinner(){
-	// if(userBetWinner == actualWinner){
-	// JOptionPane.showMessageDialog(null, "Congrats, your robot won the
-	// race!");
-	// } else {
-	// JOptionPane.showMessageDialog(null, "Your robot didn't win the race.");
-	// }
-	// }
+	public static void checkWinner() {
+		if (userBetWinner == actualWinner) {
+			JOptionPane.showMessageDialog(null, "Congrats, your robot won the race!");
+		} else {
+			JOptionPane.showMessageDialog(null, "Your robot didn't win the race.");
+		}
+	}
 
 }
