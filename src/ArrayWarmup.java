@@ -1,7 +1,7 @@
 public class ArrayWarmup {
 	public static void main(String[] args) {
 		int missingNumberList[] = { 1, 2, 3, 0, 5, 6, 7, 8, 9, 10, 11, 12};
-		System.out.println("The number missing is " + numberCalculator(missingNumberList) + ".");
+		System.out.println("The number missing is " + findMissingArrayNum(missingNumberList) + ".");
 	}
 
 	public static int findMissingArrayNum(int[] array) {
@@ -18,11 +18,11 @@ public class ArrayWarmup {
 		return totalSum;
 	}
 	
-	public static int numberCalculator(int [] array) {
+//	public static int numberCalculator(int [] array) {
 		// this only works for arrays like 1, 2, 3, 4
 		// where the array has an even length
 		// but it can calculate for arrays as long as you want as long as it meets those 2 requirements
 		
-		return 1 + array.length * (array.length /2);
-	}
+//		return 1 + array.length * (array.length /2);
+//	}
 }
