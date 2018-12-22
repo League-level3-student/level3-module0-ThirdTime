@@ -10,21 +10,22 @@ public class RobotRacerNoRecipe {
 	private static int actualWinner;
 	private static int userBetWinner;
 	private static int usersNumOfRobots;
-	static Robot[] robotList;
 
 	public static void main(String[] args) {
-
+		Robot[] robotList;
+		final int MAX_NUM_ROBOTS = 9;
+		final int MIN_NUM_ROBOTS = 1;
 		Random randNum = new Random();
 
 		String userResponse = JOptionPane.showInputDialog("How many robots do you want to race? (Between 1-9 robots, please.)");
 		try {
 			usersNumOfRobots = Integer.parseInt(userResponse);
-		} catch (NumberFormatException e) {
+		} 	catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Letters are not acceptable values. Defaulting to 5 robots.");
 			usersNumOfRobots = 5;
 		}
 
-		while (usersNumOfRobots > 9 || usersNumOfRobots < 1) {
+		while (usersNumOfRobots > MAX_NUM_ROBOTS || usersNumOfRobots < MIN_NUM_ROBOTS) {
 			userResponse = JOptionPane.showInputDialog("This is an invalid value. Please enter a number from 1 to 9.");
 			usersNumOfRobots = Integer.parseInt(userResponse);
 		}
@@ -47,15 +48,14 @@ public class RobotRacerNoRecipe {
 			robotList[i].setSpeed(10);
 		}
 
-		while (!robotWonRace()) {
+		while (!robotWonRace(robotList)) {
 			for (int i = 0; i < robotList.length; i++) {
 				robotList[i].move(randNum.nextInt(70));
 			}
-
 		}
 	}
 
-	public static boolean robotWonRace() {
+	public static boolean robotWonRace(Robot[] robotList) {
 		for (int i = 0; i < robotList.length; i++) {
 			if (robotList[i].getY() < 30) {
 				robotList[i].sparkle();
