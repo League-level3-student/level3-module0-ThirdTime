@@ -19,28 +19,28 @@ class MoreArrayFunTest {
 	@Test
 	public void arrayPrinterWorks_twoStringsWithSpaces() {
 
-		String[] arrayTwo = { "snow leopard enclosure", "bean paste candy" };
-		String allValuesTwo = MoreArrayFun.stringArrayPrinter(arrayTwo);
-		assertEquals("snow leopard enclosure, bean paste candy", allValuesTwo);
+		String[] array = { "snow leopard enclosure", "bean paste candy" };
+		String allValues = MoreArrayFun.stringArrayPrinter(array);
+		assertEquals("snow leopard enclosure, bean paste candy", allValues);
 
 	}
 
 	@Test
 	public void arrayPrinterWorks_lotsOfStrings() {
-		String[] arrayThree = { "straw", "velvet", "chocolate", "chrome", "buttons", "orange juice", "mediterranian",
+		String[] array = { "straw", "velvet", "chocolate", "chrome", "buttons", "orange juice", "mediterranian",
 				"sample", "green", "silt", "carpet", "paw print", "soft", "ingenuity", "clamshell", "pink",
 				"difficult" };
-		String allValuesThree = MoreArrayFun.stringArrayPrinter(arrayThree);
+		String allValues = MoreArrayFun.stringArrayPrinter(array);
 		assertEquals(
 				"straw, velvet, chocolate, chrome, buttons, orange juice, mediterranian, sample, green, silt, carpet, paw print, soft, ingenuity, clamshell, pink, difficult",
-				allValuesThree);
+				allValues);
 	}
 
 	@Test
 	public void arrayPrinterWorks_blankString() {
-		String[] arrayFour = { "" };
-		String allValuesFour = MoreArrayFun.stringArrayPrinter(arrayFour);
-		assertEquals("", allValuesFour);
+		String[] array = { "" };
+		String allValues = MoreArrayFun.stringArrayPrinter(array);
+		assertEquals("", allValues);
 	}
 
 	// EVEN STRING PRINTER
@@ -55,23 +55,23 @@ class MoreArrayFunTest {
 
 	@Test
 	public void evenPrinterWorks_sevenStrings() {
-		String[] array2 = { "strong", "fermenting", "glass", "crunchy", "smooth", "sweet", "rare" };
-		String allValuesForArray2 = MoreArrayFun.stringArrayEvenIndexPrinter(array2);
-		assertEquals("fermenting, crunchy, sweet", allValuesForArray2);
+		String[] array = { "strong", "fermenting", "glass", "crunchy", "smooth", "sweet", "rare" };
+		String allValues = MoreArrayFun.stringArrayEvenIndexPrinter(array);
+		assertEquals("fermenting, crunchy, sweet", allValues);
 	}
 
 	@Test
 	public void evenPrinterWorks_oneString() {
-		String[] array3 = { "worm" };
-		String allValuesFor3 = MoreArrayFun.stringArrayEvenIndexPrinter(array3);
-		assertEquals("", allValuesFor3);
+		String[] array = { "worm" };
+		String allValues = MoreArrayFun.stringArrayEvenIndexPrinter(array);
+		assertEquals("", allValues);
 	}
 
 	@Test
 	public void evenPrinterWorks_blankString() {
-		String[] arrayFour = { "" };
-		String allValuesFour = MoreArrayFun.stringArrayEvenIndexPrinter(arrayFour);
-		assertEquals("", allValuesFour);
+		String[] array = { "" };
+		String allValues = MoreArrayFun.stringArrayEvenIndexPrinter(array);
+		assertEquals("", allValues);
 	}
 
 	// REVERSE STRING PRINTER
@@ -86,25 +86,25 @@ class MoreArrayFunTest {
 
 	@Test
 	public void reversePrinterWorks_oneString() {
-		String[] array2 = { "purple" };
-		String allValuesForArrayTwo = MoreArrayFun.stringArrayReverseOrderPrinter(array2);
-		assertEquals("purple", allValuesForArrayTwo);
+		String[] array = { "purple" };
+		String allValues = MoreArrayFun.stringArrayReverseOrderPrinter(array);
+		assertEquals("purple", allValues);
 
 	}
 
 	@Test
 	public void reversePrinterWorks_twoStrings() {
-		String[] array3 = { "trash", "recycle", "compost" };
-		String allValuesForArrayThree = MoreArrayFun.stringArrayReverseOrderPrinter(array3);
-		assertEquals("compost, recycle, trash", allValuesForArrayThree);
+		String[] array = { "trash", "recycle", "compost" };
+		String allValues = MoreArrayFun.stringArrayReverseOrderPrinter(array);
+		assertEquals("compost, recycle, trash", allValues);
 
 	}
 
 	@Test
 	public void reversePrinterWorks_blankString() {
-		String[] arrayFour = { "" };
-		String allValuesFour = MoreArrayFun.stringArrayReverseOrderPrinter(arrayFour);
-		assertEquals("", allValuesFour);
+		String[] array = { "" };
+		String allValues = MoreArrayFun.stringArrayReverseOrderPrinter(array);
+		assertEquals("", allValues);
 	}
 
 }
